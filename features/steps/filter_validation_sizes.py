@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 
 sizes = {
             "XS": "//span[normalize-space()='XS']", 
@@ -22,10 +24,15 @@ polled_page_data = None
 
 @given('launch chrome browser')
 def launch_chrome(context):
-    context.driver = webdriver.Chrome()
+    chromeOptions = webdriver.ChromeOptions()
+    chromeOptions.add_argument("--start-maximized")
+    chromeOptions.add_argument('--ignore-ssl-errors=yes')
+    chromeOptions.add_argument('--ignore-certificate-errors')
+    context.driver = webdriver.Chrome(options=chromeOptions)
 
-@when('Navigate to shopping website')
-def step_impl(context):
+
+@when('Navigate to shopping Homepage')
+def Navigate_to_shopping_homepage(context):
     context.driver.get("https://react-shopping-cart-67954.firebaseapp.com/")
 
 @when('Poll data of all sizes from Website')
@@ -79,12 +86,11 @@ def step_impl(context, sizes):
         size_S = polled_page_data['S']
         size_M = polled_page_data['M']
         compute_data = find_intersection(size_S, size_M)
-        print(compute_data, validation_data)
         assert compute_data == validation_data, "Validating combined filters of provided sizes S and M not matching"
     except Exception as e:
         assert False, "Validating combined filters of provided sizes S and M is invalid"
     
 @then('close the Chrome browser')
-def step_impl(context):
+def close_browser(context):
     context.driver.close()
 
