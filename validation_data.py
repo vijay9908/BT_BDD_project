@@ -1,0 +1,16 @@
+polled_data = {'XS': {'Black Batman T-shirt': ['Free shipping', 'Black Batman T-shirt', '$10.90', '9', 'x$1.21']}, 'S': {'Black Batman T-shirt': ['Free shipping', 'Black Batman T-shirt', '$10.90', '9', 'x$1.21'], 'Blue Sweatshirt': ['Free shipping', 'Blue Sweatshirt', '$22.50', '4', 'x$5.63']}, 'M': {'Black Tule Oversized': ['Free shipping', 'Black Tule Oversized', '$29.45', '5', 'x$5.89']}, 'ML': {'Basic Cactus White T-shirt': ['Free shipping', 'Basic Cactus White T-shirt', '$13.25', '3', 'x$4.42'], 'Black Tule Oversized': ['Free shipping', 'Black Tule Oversized', '$29.45', '5', 'x$5.89']}, 'L': {'Cropped Stay Groovy off white': ['Free shipping', 'Cropped Stay Groovy off white', '$10.90', '9', 'x$1.21'], 'Basic Cactus White T-shirt': ['Free shipping', 'Basic Cactus White T-shirt', '$13.25', '3', 'x$4.42'], 'Blue T-Shirt': ['Free shipping', 'Blue T-Shirt', '$9.00', '3', 'x$3.00'], 'Loose Black T-shirt': ['Free shipping', 'Loose Black T-shirt', '$14.00', '5', 'x$2.80'], 'Ringer Hall Pass': ['Free shipping', 'Ringer Hall Pass', '$10.90', '9', 'x$1.21'], 'Grey T-shirt': ['Free shipping', 'Grey T-shirt', '$14.90', '7', 'x$2.13'], 'Black T-shirt with white stripes': ['Free shipping', 'Black T-shirt with white stripes', '$14.90', '7', 'x$2.13'], '$10.90': ['Not Free', '$10.90', 'or 9 x$1.21', 'to', 'cart'], 'Tropical Wine T-shirt': ['Free shipping', 'Tropical Wine T-shirt', '$134.90', '5', 'x$26.98'], 'Marine Blue T-shirt': ['Free shipping', 'Marine Blue T-shirt', '$49.00', '9', 'x$5.44']}, 'XL': {'Cropped Stay Groovy off white': ['Free shipping', 'Cropped Stay Groovy off white', '$10.90', '9', 'x$1.21'], '$25.90': ['Not Free', '$25.90', 'or 12 x$2.16', 'to', 'cart'], 'Blue T-Shirt': ['Free shipping', 'Blue T-Shirt', '$9.00', '3', 'x$3.00'], 'Loose Black T-shirt': ['Free shipping', 'Loose Black T-shirt', '$14.00', '5', 'x$2.80'], 'Ringer Hall Pass': ['Free shipping', 'Ringer Hall Pass', '$10.90', '9', 'x$1.21'], '$10.90': ['Not Free', '$10.90', 'or 9 x$1.21', 'to', 'cart'], 'Slim black T-shirt': ['Not Free', 'Slim black T-shirt', '$49.90', 'to', 'cart'], '$18.70': ['Not Free', '$18.70', 'or 4 x$4.67', 'to', 'cart'], 'Tropical Wine T-shirt': ['Free shipping', 'Tropical Wine T-shirt', '$134.90', '5', 'x$26.98'], 'Marine Blue T-shirt': ['Free shipping', 'Marine Blue T-shirt', '$49.00', '9', 'x$5.44']}, 'XXL': {'Cropped Stay Groovy off white': ['Free shipping', 'Cropped Stay Groovy off white', '$10.90', '9', 'x$1.21'], 'Loose Black T-shirt': ['Free shipping', 'Loose Black T-shirt', '$14.00', '5', 'x$2.80'], 'Ringer Hall Pass': ['Free shipping', 'Ringer Hall Pass', '$10.90', '9', 'x$1.21'], 'Slim black T-shirt': ['Not Free', 'Slim black T-shirt', '$49.90', 'to', 'cart']}}
+
+#Get size sorted data to use for validating results of Automation.
+def get_data_to_verify(size, get_all=False):
+    if get_all:
+        return polled_data
+    item_len = len(polled_data[size])
+    return polled_data[size]
+
+def get_validation_data_for_size_S_and_M():
+    res = { 'Black Tule Oversized': ['Free shipping', 'Black Tule Oversized', '$29.45', '5', 'x$5.89'], 
+            'Black Batman T-shirt': ['Free shipping', 'Black Batman T-shirt', '$10.90', '9', 'x$1.21'],
+            'Blue Sweatshirt': ['Free shipping', 'Blue Sweatshirt', '$22.50', '4', 'x$5.63']
+    }
+    return res
+
